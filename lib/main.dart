@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:medinavi/screens/startup_screen.dart';
+//import 'package:medinavi/screens/auth.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding =
@@ -21,11 +22,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'MediNavi',
       theme: ThemeData(useMaterial3: true).copyWith(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color.fromARGB(255, 39, 156, 41),
+        ),
       ),
-
+      //home: SignUpScreen(),
       home: StartupScreen(),
     );
   }
