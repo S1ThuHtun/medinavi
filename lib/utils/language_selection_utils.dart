@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:medinavi/l10n/app_localizations.dart';
+import 'package:medinavi/main.dart';
 
 void languageSelection(BuildContext context) {
   showDialog(
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: Text('Choose the language'),
+        title: Text(AppLocalizations.of(context)!.chooseLanguage),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -13,6 +15,7 @@ void languageSelection(BuildContext context) {
               title: Text('English'),
               onTap: () {
                 Navigator.pop(context);
+                MyApp.setLocale(context, const Locale('en'));
                 _showSnackbar(context, 'English is selected');
               },
             ),
@@ -20,6 +23,7 @@ void languageSelection(BuildContext context) {
               title: Text('日本語'),
               onTap: () {
                 Navigator.pop(context);
+                MyApp.setLocale(context, const Locale('ja'));
                 _showSnackbar(context, '日本語が選択されています');
               },
             ),
@@ -27,6 +31,7 @@ void languageSelection(BuildContext context) {
               title: Text('中文'),
               onTap: () {
                 Navigator.pop(context);
+                MyApp.setLocale(context, const Locale('zh'));
                 _showSnackbar(context, '已选择中文');
               },
             ),

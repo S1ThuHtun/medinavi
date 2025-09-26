@@ -1,0 +1,87 @@
+{
+    "@@locale" : "en",
+    "selectLanguage" : "Select Language",
+    "@selectLanguage" : {
+        "description" : "Asking the user what Language would they like to start the app with"
+    },
+    "getStarted" : "Get Started",
+    "@getStarted" : {
+        "description" : "The text to go to the SignUp and Login screen"
+    },
+    "chooseLanguage" : "Choose the Language",
+    "@chooseLanguage" : {
+        "description" : "Shows the title of the language selection box when the language selection is pressed"
+    },
+    "selectedLanguage" : "English is selected",
+    "@selectedLanguage" : {
+        "description" : "Shows what language is selected in the messagebox"
+    },
+    "login" : "Login",
+    "@login" : {
+        "description" : "Text for Login"
+    },
+    "loginAs" : "Logged in as {email}",
+    "@loginAs" : {
+        "description" : "After logged the snackbar will show logged in as email"
+    },
+    "signedUpAs" : "Singed up as {email}",
+    "@signedUpAs" : {
+        "description" : "After signed up the snackbar will show signed up as email"
+    },
+    "enterEmail" : "Please enter your email",
+    "@enterEmail" : {
+        "description" : "When user is not filling email, this message will be shown"
+    },
+    "invalidEmail" : "Invalid email format",
+    "@invalidEmail" : {
+        "description" : "When user input invalid method, this message will show"
+    },
+    "enteredPasswordMessage" : "Enter Password",
+    "@enterPasswordMessage" : {
+        "description" : "Ask user to provide the password"
+    },
+    "enteredPasswordErrorMessage" : "Password must have at least 6 characters",
+    "@enterPasswordErrorMessage" : {
+        "description" : "When the password is below 6 characters, this message will be shown"
+    },
+    "confirmPasswordMessage" : "Confirm Password",
+    "@confirmPasswordMessage" : {
+        "description" : "Ask user to confirm the password"
+    },
+    "confirmPasswordErrorMessage" : "Password and Confirm Password are not matched",
+    "@confirmPasswordErrorMessage" : {
+        "description" : "When the password and confirmPassword are not matched, this message will be shown"
+    },
+    "logOut" : "LogOut",
+    "@logOut" : {
+        "description" : "Text for Logout"
+    },
+    "signUp" : "SignUp",
+    "@signUp" : {
+        "description" : "Text for SignUp"
+    },
+    "newSignUp" : "Don't have an account? SignUp",
+    "@newSignUp" : {
+        "description" : "Text for SignUp new users"
+    },
+    "oldLogin" : "Already have an account! Login",
+    "@oldLogin" : {
+        "description" : "Text for old users to login"
+    },
+    "emailAddress" : "Email Address",
+    "@emailAddress" : {
+        "description" : "Input for email address"
+    },
+    "password" : "Password",
+    "@password" : {
+        "description" : "Adding password for the mail"
+    },
+    "confirmPassword" : "Confirm Password",
+    "@confirmPassword" : {
+        "description" : "Adding the same password for confirmation"
+    },
+    "settings" : "Settings",
+    "@settings" : {
+        "description" : "Title of the endDrawer from the appbar in Login screen"
+    }
+}

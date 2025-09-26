@@ -1,25 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:medinavi/l10n/app_localizations.dart';
 import 'package:medinavi/screens/sign_up_screen.dart';
 import 'package:medinavi/utils/language_selection_utils.dart';
-//import 'package:medinavi/screens/auth.dart';
 
 class StartupScreen extends StatelessWidget {
   const StartupScreen({super.key});
-
-  // Navigation function for the second button (login/register)
-  // void _navigateToLogin(BuildContext context) {
-  //   Navigator.push(
-  //     context,
-  //     MaterialPageRoute(builder: (context) => AuthScreen()),
-  //   );
-  // }
-
-  // void _navigateToAuth(ctx) {
-  //   Navigator.push(
-  //     ctx,
-  //     MaterialPageRoute(builder: (context) => AuthScreen()),
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +50,7 @@ class StartupScreen extends StatelessWidget {
                         languageSelection(context);
                       },
                       child: Text(
-                        'Language',
+                        AppLocalizations.of(context)!.selectLanguage,
                         style: TextStyle(fontSize: 20),
                       ),
                     ),
@@ -84,7 +69,7 @@ class StartupScreen extends StatelessWidget {
                         );
                       },
                       child: Text(
-                        'Get Started',
+                        AppLocalizations.of(context)!.getStarted,
                         style: TextStyle(fontSize: 20),
                       ),
                     ),

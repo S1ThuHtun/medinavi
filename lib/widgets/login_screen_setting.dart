@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medinavi/l10n/app_localizations.dart';
 import 'package:medinavi/utils/language_selection_utils.dart';
 
 class LoginScreenSetting extends StatelessWidget {
@@ -23,7 +24,7 @@ class LoginScreenSetting extends StatelessWidget {
                 Icon(Icons.settings, color: Colors.white, size: 35),
                 SizedBox(width: 10),
                 Text(
-                  'Settings',
+                  AppLocalizations.of(context)!.settings,
                   style: TextStyle(color: Colors.white, fontSize: 28),
                 ),
               ],
@@ -31,7 +32,7 @@ class LoginScreenSetting extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.language, color: Colors.blue),
-            title: Text('Select Language'),
+            title: Text(AppLocalizations.of(context)!.selectLanguage),
             onTap: () {
               Navigator.pop(context);
               languageSelection(
@@ -40,7 +41,7 @@ class LoginScreenSetting extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.language, color: Colors.indigo),
+            leading: Icon(Icons.info, color: Colors.indigo),
             title: Text('About'),
             onTap: () {},
           ),

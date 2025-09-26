@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medinavi/l10n/app_localizations.dart';
 import 'package:medinavi/widgets/login_screen_setting.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -34,13 +35,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
       final password = _passwordController.text;
 
       if (_isLogin) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text('Logged in as $email')));
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(AppLocalizations.of(context)!.loginAs(email)),
+          ),
+        );
       } else {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text('Singed up as $email')));
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(AppLocalizations.of(context)!.signedUpAs(email)),
+          ),
+        );
       }
 
       // Clear Fields
@@ -94,7 +99,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              _isLogin ? 'Login' : 'SignUp',
+              _isLogin
+                  ? AppLocalizations.of(context)!.login
+                  : AppLocalizations.of(context)!.signUp,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35),
             ),
             SizedBox(height: 5),
@@ -111,7 +118,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       TextFormField(
                         controller: _emailController,
                         decoration: InputDecoration(
-                          labelText: 'Email Address',
+                          labelText: AppLocalizations.of(
+                            context,
+                          )!.emailAddress,
                           border: OutlineInputBorder(),
                         ),
                         keyboardType: TextInputType.emailAddress,
@@ -119,10 +128,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         textCapitalization: TextCapitalization.none,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Please Enter your email';
+                            return AppLocalizations.of(
+                              context,
+                            )!.enterEmail;
                           }
                           if (!RegExp(r'^\S+@\S+\.\S+$').hasMatch(value)) {
-                            return 'Invalid email format';
+                            return AppLocalizations.of(
+                              context,
+                            )!.invalidEmail;
                           }
                           return null;
                         },
@@ -132,7 +145,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       TextFormField(
                         controller: _passwordController,
                         decoration: InputDecoration(
-                          labelText: 'Password',
+                          labelText: AppLocalizations.of(
+                            context,
+                          )!.password,
                           border: OutlineInputBorder(),
                         ),
                         autocorrect: false,
@@ -140,10 +155,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         obscureText: true,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Enter Password';
+                            return AppLocalizations.of(
+                              context,
+                            )!.enteredPasswordMessage;
                           }
                           if (value.trim().length < 6) {
-                            return 'Password must be at least 6 characters';
+                            return AppLocalizations.of(
+                              context,
+                            )!.enteredPasswordErrorMessage;
                           }
                           return null;
                         },
@@ -154,7 +173,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         TextFormField(
                           controller: _confirmController,
                           decoration: InputDecoration(
-                            labelText: 'Confirm Password',
+                            labelText: AppLocalizations.of(
+                              context,
+                            )!.confirmPassword,
                             border: OutlineInputBorder(),
                           ),
                           autocorrect: false,
@@ -162,10 +183,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           obscureText: true,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Enter Confirm Password';
+                              return AppLocalizations.of(
+                                context,
+                              )!.confirmPasswordMessage;
                             }
                             if (value != _passwordController.text) {
-                              return 'Password and Confirm Password are not matched';
+                              return AppLocalizations.of(
+                                context,
+                              )!.confirmPasswordErrorMessage;
                             }
                             return null;
                           },
@@ -174,13 +199,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                       ElevatedButton(
                         onPressed: _submit,
-                        child: Text(_isLogin ? 'Login' : 'Sign Up'),
+                        child: Text(
+                          _isLogin
+                              ? AppLocalizations.of(context)!.login
+                              : AppLocalizations.of(context)!.signUp,
+                        ),
                       ),
                       SizedBox(height: 2),
 
                       TextButton(
                         onPressed: _toggleForm,
-                        child: Text("Don't have an account? Sign Up"),
+                        child: Text(
+                          _isLogin
+                              ? AppLocalizations.of(context)!.newSignUp
+                              : AppLocalizations.of(context)!.oldLogin,
+                        ),
                       ),
                     ],
                   ),

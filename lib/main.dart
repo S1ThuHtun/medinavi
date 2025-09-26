@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:medinavi/l10n/app_localizations.dart';
 import 'package:medinavi/screens/startup_screen.dart';
-//import 'package:medinavi/screens/auth.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding =
@@ -16,8 +16,26 @@ void main() async {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+
+  static void setLocale(context, Locale newLocale) {
+    _MyAppState? state = context.findAncestorStateOfType<_MyAppState>();
+    state?.setLocale(newLocale);
+  }
+}
+
+class _MyAppState extends State<MyApp> {
+  Locale _locale = const Locale('en');
+
+  void setLocale(Locale locale) {
+    setState(() {
+      _locale = locale;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +47,9 @@ class MyApp extends StatelessWidget {
           seedColor: const Color.fromARGB(255, 39, 156, 41),
         ),
       ),
-      //home: SignUpScreen(),
+      locale: _locale,
+      supportedLocales: AppLocalizations.supportedLocales,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
       home: StartupScreen(),
     );
   }
