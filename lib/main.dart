@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:medinavi/l10n/app_localizations.dart';
 import 'package:medinavi/screens/startup_screen.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding =
       WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  
+  // Initialize Firebase
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  
   await Future.delayed(
     Duration(seconds: 2),
   ); // Changed from 3 to 2 seconds
