@@ -19,7 +19,26 @@ A new Flutter project with Firebase Authentication integration.
 
 ### Firebase Setup
 
-This project requires Firebase Authentication to be configured. Follow these steps:
+This project requires Firebase Authentication to be configured. You have two options:
+
+#### Option 1: Automated Setup (Recommended)
+
+Run the setup script for your platform:
+
+**macOS/Linux:**
+```bash
+chmod +x setup_firebase.sh
+./setup_firebase.sh
+```
+
+**Windows:**
+```bash
+setup_firebase.bat
+```
+
+The script will guide you through the entire setup process.
+
+#### Option 2: Manual Setup
 
 1. **Install Firebase CLI and FlutterFire CLI:**
    ```bash
