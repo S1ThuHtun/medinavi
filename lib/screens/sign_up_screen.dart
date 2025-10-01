@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:medinavi/l10n/app_localizations.dart';
 import 'package:medinavi/widgets/login_screen_setting.dart';
+import 'package:medinavi/services/auth_service.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -14,6 +15,8 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   var _isLogin = true;
   final _formKey = GlobalKey<FormState>();
+  final _authService = AuthService();
+  var _isLoading = false;
 
   // Controllers
   final _emailController = TextEditingController();
@@ -29,29 +32,64 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   // Login Form Submission
-  void _submit() {
+  void _submit() async {
     if (_formKey.currentState!.validate()) {
+      setState(() {
+        _isLoading = true;
+      });
+
       final email = _emailController.text;
       final password = _passwordController.text;
 
-      if (_isLogin) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(AppLocalizations.of(context)!.loginAs(email)),
-          ),
-        );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(AppLocalizations.of(context)!.signedUpAs(email)),
-          ),
-        );
-      }
+      try {
+        if (_isLogin) {
+          await _authService.signInWithEmailAndPassword(
+            email: email,
+            password: password,
+          );
+          if (mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(AppLocalizations.of(context)!.loginAs(email)),
+                backgroundColor: Colors.green,
+              ),
+            );
+          }
+        } else {
+          await _authService.signUpWithEmailAndPassword(
+            email: email,
+            password: password,
+          );
+          if (mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(AppLocalizations.of(context)!.signedUpAs(email)),
+                backgroundColor: Colors.green,
+              ),
+            );
+          }
+        }
 
-      // Clear Fields
-      _emailController.clear();
-      _passwordController.clear();
-      _confirmController.clear();
+        // Clear Fields
+        _emailController.clear();
+        _passwordController.clear();
+        _confirmController.clear();
+      } catch (e) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(e.toString()),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
+      } finally {
+        if (mounted) {
+          setState(() {
+            _isLoading = false;
+          });
+        }
+      }
     }
   }
 
@@ -198,12 +236,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       SizedBox(height: 40),
 
                       ElevatedButton(
-                        onPressed: _submit,
-                        child: Text(
-                          _isLogin
-                              ? AppLocalizations.of(context)!.login
-                              : AppLocalizations.of(context)!.signUp,
-                        ),
+                        onPressed: _isLoading ? null : _submit,
+                        child: _isLoading
+                            ? SizedBox(
+                                height: 20,
+                                width: 20,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                ),
+                              )
+                            : Text(
+                                _isLogin
+                                    ? AppLocalizations.of(context)!.login
+                                    : AppLocalizations.of(context)!.signUp,
+                              ),
                       ),
                       SizedBox(height: 2),
 

@@ -1,0 +1,19 @@
+{
+  "_comment": "This is a placeholder file. Replace this with your actual google-services.json file from Firebase Console",
+  "_instructions": [
+    "1. Go to Firebase Console (https://console.firebase.google.com/)",
+    "2. Select your project",
+    "3. Click on the gear icon (Project settings)",
+    "4. Scroll down to 'Your apps' section",
+    "5. Click on the Android icon to add an Android app (if not already added)",
+    "6. Register your app with package name: com.example.medinavi",
+    "7. Download the google-services.json file",
+    "8. Replace this file with the downloaded google-services.json",
+    "OR run: flutterfire configure (recommended)"
+  ],
+  "project_info": {
+    "project_number": "YOUR_PROJECT_NUMBER",
+    "project_id": "YOUR_PROJECT_ID",
+    "storage_bucket": "YOUR_STORAGE_BUCKET"
+  }
+}
